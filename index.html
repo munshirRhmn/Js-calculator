@@ -36,46 +36,45 @@
     </div>
 
     <script>
-        let result = 0; 
-    
+        let result = 0;
+
         function display(value) {
-    let resultField = document.getElementById('output-screen');
-    let lastChar = resultField.value.slice(-1);
+            let resultField = document.getElementById('output-screen');
+            let lastChar = resultField.value.slice(-1);
 
-    if ((isNaN(value) && isNaN(lastChar) && value !== '.') || (isNaN(value) && resultField.value === '')) {
-        return;
-    }
+            if ((isNaN(value) && isNaN(lastChar) && value !== '.') || (isNaN(value) && resultField.value === '')) {
+                return;
+            }
 
-    resultField.value += value;
-}
+            resultField.value += value;
+        }
 
-    
         function clearScreen() {
             document.getElementById('output-screen').value = '';
-            result = 0; 
+            result = 0;
         }
-    
+
         function del() {
             let currentInput = document.getElementById('output-screen').value;
             document.getElementById('output-screen').value = currentInput.slice(0, -1);
         }
-    
+
         function calculate() {
             try {
                 let expression = document.getElementById('output-screen').value;
                 result = eval(expression);
-    
+
                 if (isNaN(result) || !isFinite(result)) {
                     throw new Error("Invalid input");
                 }
-    
+
                 document.getElementById('output-screen').value = result;
             } catch (error) {
                 alert("Invalid input");
             }
         }
     </script>
-    
+
 </body>
 
 </html>
