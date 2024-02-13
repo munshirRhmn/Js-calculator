@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" href="image/main logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" placeholder="0" id="output-screen">
+            <button onclick="clearScreen()">Cl</button>
+            <button onclick="del()">DEL</button>
+            <button onclick="display('%')">%</button>
+            <button onclick="display('/')">/</button>
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button onclick="display('*')">*</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button onclick="display('-')">-</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button onclick="display('+')">+</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="display('0')">0</button>
+            <button onclick="calculate()" class="equal">=</button>
+        </div>
+    </div>
+
+    <script>
+        let result = 0; 
+    
+        function display(value) {
+    let resultField = document.getElementById('output-screen');
+    let lastChar = resultField.value.slice(-1);
+
+    if ((isNaN(value) && isNaN(lastChar) && value !== '.') || (isNaN(value) && resultField.value === '')) {
+        return;
+    }
+
+    resultField.value += value;
+}
+
+    
+        function clearScreen() {
+            document.getElementById('output-screen').value = '';
+            result = 0; 
+        }
+    
+        function del() {
+            let currentInput = document.getElementById('output-screen').value;
+            document.getElementById('output-screen').value = currentInput.slice(0, -1);
+        }
+    
+        function calculate() {
+            try {
+                let expression = document.getElementById('output-screen').value;
+                result = eval(expression);
+    
+                if (isNaN(result) || !isFinite(result)) {
+                    throw new Error("Invalid input");
+                }
+    
+                document.getElementById('output-screen').value = result;
+            } catch (error) {
+                alert("Invalid input");
+            }
+        }
+    </script>
+    
+</body>
+
+</html>
