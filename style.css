@@ -14,11 +14,11 @@
     align-items: center;
 }
 .calculator{
-    background-color: #ecf0f3;
+    background-color: #292828;
     padding: 15px;
     border-radius: 30px;
-    box-shadow: inset 5px 5px 12px #ffffff,
-                      5px 5px 12px rgba(0,0,0,.16);
+    /* box-shadow: inset 5px 5px 12px #ffffff,
+                      5px 5px 12px rgba(0,0,0,.16); */
     display: grid;
     grid-template-columns: repeat(4,68px);                  
 
@@ -27,12 +27,12 @@ input{
     grid-column: span 4;
     height: 70px;
     width: 260px;
-    background-color: #ecf0f3;
-    box-shadow: inset -5px -5px -12px  #ffffff,
-                       5px 5px 12px rgba(0,0,0,.16);
+    background-color:  #2d2c2c;
+    /* box-shadow: inset -5px -5px -12px  #ffffff,
+                       5px 5px 12px rgba(0,0,0,.16); */
     border: none;
     border-radius: 30px;
-    color: rgb(70, 70,70);
+    color:rgb(206, 202, 202);
     font-size: 50px;
     text-align: end;
     margin: auto;
@@ -41,12 +41,13 @@ input{
     padding: 20px;
 
 }
+
 button{
     height: 48px;
     width: 48px;
     background-color: #ecf0f3;
-    box-shadow: -5px -5px 12px #ffffff,
-                 5px 5px 12px rgba(0,0,0,.16);
+    /* box-shadow: -5px -5px 12px #ffffff,
+                 5px 5px 12px rgba(0,0,0,.16); */
     border: none;
     border-radius: 50%;
     margin: 8px;
@@ -54,10 +55,28 @@ button{
 
 
 }
+.red{
+    background-color: orange;
+    font-size: 23px;
+    color: white;
+}
+.gray{
+    background-color:rgb(170, 169, 169);
+    font-size: 18px;
+    color: rgb(0, 0, 0);  
+}
+.black{
+    background-color:rgb(67, 66, 66);
+    font-size: 22px;
+    color: white;    
+}
 .equal{
     width: 115px;
+    font-size: 23px;
     border-radius: 40px;
-    background-color: #ecf0f3;
-    box-shadow: inset -5px -5px -12px  #ffffff,
+    background-color:orange;
+    color: white;
+    /* box-shadow: inset -5px -5px -12px  #ffffff,
                        5px 5px 12px rgba(0,0,0,.16);
+                      */
 }
