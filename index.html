@@ -14,7 +14,7 @@
         <div class="calculator">
             <input class="ss" type="text" placeholder="0" id="output-screen">
             <button class="gray" onclick="clearScreen()">AC</button>
-            <button class="gray" onclick="del()">DE</button>
+            <button class="gray" onclick="clearLast()">DE</button>
             <button class="gray" onclick="display('%')">%</button>
             <button class="red" onclick="display('/')">/</button>
             <button class="black" onclick="display('7')">7</button>
@@ -29,57 +29,57 @@
             <button class="black" onclick="display('2')">2</button>
             <button class="black" onclick="display('3')">3</button>
             <button class="red" onclick="display('+')">+</button>
-            
-            
-            <button class="black" onclick="display('0')"  >0</button>
+
+            <button class="black" onclick="display('0')">0</button>
             <button class="black" onclick="display('.')">.</button>
-            <button c onclick="calculate()" class="equal">=</button>
-            
-            
+            <button class="equal" onclick="solve()">=</button>
         </div>
     </div>
-
     <script>
-        let result = 0;
-
-        function display(value) {
+        function display(val) {
             let resultField = document.getElementById('output-screen');
-            let lastChar = resultField.value.slice(-1);
-
-            if ((isNaN(value) && isNaN(lastChar) && value !== '.') || (isNaN(value) && resultField.value === '')) {
+            if (resultField.value === '' && isNaN(val)) {
                 return;
             }
-
-            resultField.value += value;
+            if (isNaN(val) && isNaN(resultField.value.slice(-1))) {
+                return;
+            }
+            resultField.value += val;
         }
 
+        function solve() {
+            let x = document.getElementById('output-screen').value;
+            if (x === '') {
+                return;
+            }
+            if (x.includes('%')) {
+                let parts = x.split('%');
+                let num = parseFloat(parts[0]);
+                let secondNum = parts.length > 1 ? parseFloat(parts[1]) : 1;
+                let percentValue = num * (secondNum / 100);
+                document.getElementById('output-screen').value = percentValue;
+            } else {
+                let y = eval(x);
+                if (isNaN(y) || !isFinite(y)) {
+                    document.getElementById('output-screen').value = "Error";
+                } else {
+                    document.getElementById('output-screen').value = y;
+                }
+            }
+        }
 
         function clearScreen() {
             document.getElementById('output-screen').value = '';
-            result = 0;
         }
 
-        function del() {
-            let currentInput = document.getElementById('output-screen').value;
-            document.getElementById('output-screen').value = currentInput.slice(0, -1);
-        }
-
-        function calculate() {
-            try {
-                let expression = document.getElementById('output-screen').value;
-                result = eval(expression);
-
-                if (isNaN(result) || !isFinite(result)) {
-                    throw new Error("Invalid input");
-                }
-
-                document.getElementById('output-screen').value = result;
-            } catch (error) {
-                alert("Invalid input");
-            }
+        function clearLast() {
+            let current = document.getElementById('output-screen').value;
+            document.getElementById('output-screen').value = current.slice(0, -1);
         }
     </script>
-
 </body>
 
 </html>
+
+
+
